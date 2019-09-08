@@ -16,7 +16,7 @@
     <br>
     <p id="losses">Losses: 0</p>
     <br>
-    <p id="guessLeft">Guesses Left:10</p>
+    <p id="guessLeft">Guesses Left: 9</p>
     <br>
     <p id="guessesMade">Your Guesses so far:</p>
 
@@ -26,22 +26,27 @@
         var wins = 0
         var losses = 0
         var guessLeft = 9
-
-
         var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "_"];
-
-        var guessesSoFar = []
-
-        var computerGuess = (Math.floor(Math.random() * 26));
-        console.log(computerGuess);
-        console.log(letters[computerGuess]);
-
-        // user pushes key, stored as userchoice
+        var guessesSoFar;
+        var computerGuessIndex;
+        var computerGuess;
         var userchoice;
+
+        function reset() {
+            // reset guessesSoFar
+            guessesSoFar = []
+            // reset guessleft
+            guessLeft = 9
+            // reset computerGuess
+            computerGuessIndex = (Math.floor(Math.random() * 26));
+            computerGuess = letters[computerGuessIndex]
+            console.log(computerGuess);
+        }
+
         document.onkeyup = function (event) {
             userchoice = event.key;
             // if userchoice is equal to item in guessesSoFar then
-            if (guessesSoFar.includes(userchoice)) {
+            if (guessesSoFar.includes(userchoice) || !letters.includes(userchoice)) {
                 return
             }
             console.log(userchoice);
@@ -52,35 +57,33 @@
             if (userchoice === computerGuess) {
                 // increase win by one
                 wins++
-                // reset guessesSoFar
-                guessesSoFar = []
-                // reset guessleft
-                guessLeft = 9
+                reset()
             }
             // if userkey is not equal to computer guess then
-            if (userchoice !== computerGuess) {
+            else {
                 // decrease guess left by one
                 guessLeft--
                 // if guessleft equals 0, then 
                 if (guessLeft === 0) {
                     // increase losses +1
                     losses++
-                    // reset guessLeft
-                    guessLeft = 9
-                    // reset guessesSoFar
-                    guessesSoFar = []
+                    reset()
                 }
 
             }
 
-
-
-
+            document.getElementById("wins").innerText = "Wins: " + wins
+            document.getElementById("losses").innerText = "Losses: " + losses
+            document.getElementById("guessLeft").innerText = "Guesses Left: " + guessLeft
+            document.getElementById("guessesMade").innerText = "Your Guesses so Far: " + guessesSoFar
 
         }
 
+        // initialize the game
+        reset();
 
-    // for (var i = 0; i < letters.length; i++);
+
+
 
 
 
