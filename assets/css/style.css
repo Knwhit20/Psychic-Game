@@ -1,0 +1,21 @@
+h1 {
+    color: blueviolet;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+h2 {
+    color: blue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+p {
+    color: magenta;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+
+}
+#container {
+    background-color: aquamarine;
+    padding: 20px;
+}
