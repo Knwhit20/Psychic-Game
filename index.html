@@ -1,16 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>The Psychic Game</title>
 </head>
+
 <body>
-    <script>
-    
-    
+    <h1>The Psychic Game</h1>
+    <h2>Guess what letter I'm thinking of...</h2>
+
+    <p id="wins">Wins: 0</p>
+    <br>
+    <p id="losses">Losses: 0</p>
+    <br>
+    <p id="guessLeft">Guesses Left:10</p>
+    <br>
+    <p id="guessesMade">Your Guesses so far:</p>
+
+
+    <script type="text/javascript">
+        // check letters
+        var wins = 0
+        var losses = 0
+        var guessLeft = 9
+
+
+        var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "_"];
+
+        var guessesSoFar = []
+
+        var computerGuess = (Math.floor(Math.random() * 26));
+        console.log(computerGuess);
+        console.log(letters[computerGuess]);
+
+        // user pushes key, stored as userchoice
+        var userchoice;
+        document.onkeyup = function (event) {
+            userchoice = event.key;
+            // if userchoice is equal to item in guessesSoFar then
+            if (guessesSoFar.includes(userchoice)) {
+                return
+            }
+            console.log(userchoice);
+            guessesSoFar.push(userchoice);
+            console.log(guessesSoFar);
+
+            // if userkey is equal to computer guess then 
+            if (userchoice === computerGuess) {
+                // increase win by one
+                wins++
+                // reset guessesSoFar
+                guessesSoFar = []
+                // reset guessleft
+                guessLeft = 9
+            }
+            // if userkey is not equal to computer guess then
+            if (userchoice !== computerGuess) {
+                // decrease guess left by one
+                guessLeft--
+                // if guessleft equals 0, then 
+                if (guessLeft === 0) {
+                    // increase losses +1
+                    losses++
+                    // reset guessLeft
+                    guessLeft = 9
+                    // reset guessesSoFar
+                    guessesSoFar = []
+                }
+
+            }
+
+
+
+
+
+        }
+
+
+    // for (var i = 0; i < letters.length; i++);
+
+
+
+
+
+
+
+
+         // returns a random integer from 0 to 99
+    //Guess what letter I'm thinking of
+
+//         4. Wins: (# of times the user has guessed the letter correctly)
+
+//         5. Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+
+//         6. Guesses Left: (# of guesses left.This will update)
+
+//         7. Your Guesses So Far: (the specific letters that the user typed.Display these until the user either wins or loses.)
+
+//         8. When the player wins, increase the Wins counter and start the game over again(without refreshing the page).
+
+// 9. When the player loses, increase the Losses counter and restart the game without a page refresh(just like when the user wins).
+
+
     </script>
-    
+
 </body>
+
 </html>
