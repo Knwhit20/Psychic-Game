@@ -40,7 +40,7 @@
             // reset computerGuess
             computerGuessIndex = (Math.floor(Math.random() * 26));
             computerGuess = letters[computerGuessIndex]
-            console.log(computerGuess);
+            // console.log(computerGuess);
         }
 
         document.onkeyup = function (event) {
@@ -49,9 +49,9 @@
             if (guessesSoFar.includes(userchoice) || !letters.includes(userchoice)) {
                 return
             }
-            console.log(userchoice);
+            // console.log(userchoice);
             guessesSoFar.push(userchoice);
-            console.log(guessesSoFar);
+            // console.log(guessesSoFar);
 
             // if userkey is equal to computer guess then 
             if (userchoice === computerGuess) {
